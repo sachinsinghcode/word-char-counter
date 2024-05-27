@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Word & Character Counter</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #f8f9fa;
+      margin: 50px;
+    }
+    .counter-box {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 class="text-center">Word & Character Counter</h1>
+    <div class="form-group">
+      <textarea id="text-input" class="form-control" rows="10" placeholder="Type your text here..."></textarea>
+    </div>
+    <div class="counter-box">
+      <p><strong>Character Count:</strong> <span id="char-count">0</span></p>
+      <p><strong>Word Count:</strong> <span id="word-count">0</span></p>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('text-input').addEventListener('input', function() {
+      const text = this.value;
+      const charCount = text.length;
+      const wordCount = text.trim().split(/\s+/).filter(function(word) {
+        return word.length > 0;
+      }).length;
+
+      document.getElementById('char-count').textContent = charCount;
+      document.getElementById('word-count').textContent = wordCount;
+    });
+  </script>
+</body>
+</html>
